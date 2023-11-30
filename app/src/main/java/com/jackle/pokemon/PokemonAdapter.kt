@@ -30,8 +30,8 @@ class PokemonViewHolder(
 
     fun bindView(pokemon: Pokemon) {
         pokemon.apply {
-            bind.nameTv.text = nameEn
-            bind.typeTv.text = type
+            bind.nameTv.text = "nameEn"
+            bind.typeTv.text = ""
             bind.imageView.background =
                 ContextCompat.getDrawable(
                     bind.imageView.context,

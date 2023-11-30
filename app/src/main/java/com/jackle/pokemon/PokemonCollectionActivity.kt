@@ -1,10 +1,8 @@
 package com.jackle.pokemon
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.jackle.pokemon.databinding.ActivityPokemonCollectionBinding
-import com.jackle.pokemon.databinding.PokemonCardItemBinding
 
 class PokemonCollectionActivity : AppCompatActivity() {
 
@@ -15,10 +13,7 @@ class PokemonCollectionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val adapter = PokemonAdapter(
-            mockPokemonList()
-        )
-
+        val adapter = PokemonAdapter(listOf())
         binding.recyclerView.adapter = adapter
     }
 }

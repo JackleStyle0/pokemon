@@ -4,24 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.jackle.pokemon.databinding.ActivityMainBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    val pokemonList = listOf(
-        "Bulbasaur" to "ฟุชิกิดาเนะ",
-        "Ivysaur" to "ฟุชิกิโซ",
-        "Venusaur" to "ฟุชิกิบานะ",
-        "Charmander" to "ฮิโตคาเงะ",
-        "Squirtle" to "เซนิกาเมะ",
-        "Caterpie" to "คาเตอร์ปี",
-        "Weedle" to "บีเดิล",
-        "Pidgey" to "ป็อปโปะ",
-        "Rattata" to "โครัตตา",
-        "Pikachu" to "พิคาชู",
-    )
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,18 +21,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.pokeBall.setOnClickListener {
-            val pokemon = randomPokemon()
-            Log.d(
-                MainActivity::class.java.simpleName,
-                "NameEn ${pokemon.first} NameTh ${pokemon.second}"
-            )
+            val apiHelper = PokemonRepositoryImpl(PokemonFactoryApi.createAPI())
+            viewModel.getPokemonList(apiHelper)
+        }
+
+        lifecycleScope.launch {
+            viewModel.uiState.collectLatest {
+                Log.d(
+                    MainActivity::class.java.simpleName,
+                    "NameEn ${it.name.english} NameTh ${it.hp}"
+                )
+            }
         }
 
         binding.bagPack.setOnClickListener {
             val intent = Intent(this, PokemonCollectionActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    private fun randomPokemon() = pokemonList.random()
+//        viewModel.getPokemonListCoroutine()
+    }
 }
