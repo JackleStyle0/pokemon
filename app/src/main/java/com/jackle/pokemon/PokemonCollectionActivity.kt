@@ -1,11 +1,8 @@
 package com.jackle.pokemon
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.jackle.pokemon.databinding.ActivityPokemonCollectionBinding
-import com.jackle.pokemon.databinding.PokemonCardItemBinding
 
 class PokemonCollectionActivity : AppCompatActivity() {
 
@@ -23,14 +20,14 @@ class PokemonCollectionActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
 
         // Part Transform activity to fragment
-        if (savedInstanceState == null) {
-            binding.contentContainer.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.GONE
-
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.contentContainer, PokemonCollectionFragment.newInstance())
-                .addToBackStack(null)
-                .commit()
-        }
+//        if (savedInstanceState == null) {
+//            binding.contentContainer.visibility = View.VISIBLE
+//            binding.recyclerView.visibility = View.GONE
+//
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.contentContainer, PokemonCollectionFragment.newInstance())
+//                .addToBackStack(null)
+//                .commit()
+//        }
     }
 }
