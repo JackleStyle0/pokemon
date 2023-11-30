@@ -1,11 +1,15 @@
 package com.jackle.pokemon
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.jackle.pokemon.CustomDialog.Companion.KEY_SHARED_PREFERENCES_NAME
+import com.jackle.pokemon.CustomDialog.Companion.KEY_TRAINER_NAME
 import com.jackle.pokemon.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -39,6 +43,23 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        viewModel.getPokemonListCoroutine()
+        binding.trainer.setOnClickListener {
+            CustomDialog.newInstance().apply {
+                onOkClickListener = { getTrainerName() }
+            }.show(supportFragmentManager, CustomDialog::class.java.simpleName)
+        }
     }
+
+    private fun getTrainerName() {
+        val sharedPref =
+            getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE) ?: return
+        val trainerName = sharedPref.getString(KEY_TRAINER_NAME, "")
+
+        if (!trainerName.isNullOrEmpty()) {
+            this.toast(trainerName)
+        }
+    }
+
+    private fun Context.toast(message: String) =
+        Toast.makeText(this, "Trainer name is $message", Toast.LENGTH_SHORT).show()
 }

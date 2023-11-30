@@ -15,5 +15,16 @@ class PokemonCollectionActivity : AppCompatActivity() {
 
         val adapter = PokemonAdapter(listOf())
         binding.recyclerView.adapter = adapter
+
+        // Part Transform activity to fragment
+//        if (savedInstanceState == null) {
+//            binding.contentContainer.visibility = View.VISIBLE
+//            binding.recyclerView.visibility = View.GONE
+//
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.contentContainer, PokemonCollectionFragment.newInstance())
+//                .addToBackStack(null)
+//                .commit()
+//        }
     }
 }
