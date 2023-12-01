@@ -36,7 +36,7 @@ class PokemonDetailActivity : AppCompatActivity() {
 
     private fun ImageView.loadImage(url: String) {
         Glide
-            .with(this@PokemonDetailActivity)
+            .with(this)
             .load(url)
             .centerCrop()
             .into(this)

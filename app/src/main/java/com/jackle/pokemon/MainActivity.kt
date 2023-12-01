@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.jackle.pokemon.CustomDialog.Companion.KEY_SHARED_PREFERENCES_NAME
 import com.jackle.pokemon.CustomDialog.Companion.KEY_TRAINER_NAME
+import com.jackle.pokemon.PokemonDetailActivity.Companion.POKEMON_DETAIL
 import com.jackle.pokemon.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.uiState.collectLatest {
                 this@MainActivity.toast("GOTCHA!")
                 binding.pokeBallAnimate.visibility = View.GONE
+                navigateToDetail(it)
                 Log.d(
                     MainActivity::class.java.simpleName,
                     "NameEn ${it.name.english} NameTh ${it.hp}"
@@ -66,4 +68,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun Context.toast(message: String) =
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+    private fun navigateToDetail(detail:Pokemon) {
+        val intent = Intent(this, PokemonDetailActivity::class.java)
+        intent.putExtra(POKEMON_DETAIL,detail)
+        startActivity(intent)
+    }
 }
