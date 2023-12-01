@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    id("com.google.dagger.hilt.android")
+    kotlin("kapt")
 }
 
 android {
@@ -74,4 +76,13 @@ dependencies {
     implementation("com.google.code.gson:gson:2.9.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.airbnb.android:lottie:5.2.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
+
+    implementation("com.google.dagger:hilt-android:2.44.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
+}
+
+kapt {
+    correctErrorTypes = true
 }

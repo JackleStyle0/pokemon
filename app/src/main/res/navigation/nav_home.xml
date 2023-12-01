@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.jackle.pokemon.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_pokemonCollectionFragment"
+            app:destination="@id/pokemonCollectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.jackle.pokemon.detail.PokemonDetailFragment"
+        android:label="PokemonDetailFragment" />
+    <fragment
+        android:id="@+id/pokemonCollectionFragment"
+        android:name="com.jackle.pokemon.collection.PokemonCollectionFragment"
+        android:label="PokemonCollectionFragment" >
+        <action
+            android:id="@+id/action_pokemonCollectionFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
+</navigation>

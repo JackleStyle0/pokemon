@@ -1,6 +1,6 @@
-package com.jackle.pokemon
+package com.jackle.pokemon.network
 
-import kotlinx.coroutines.flow.Flow
+import com.jackle.pokemon.model.Pokemon
 import retrofit2.Response
 import retrofit2.http.GET
 

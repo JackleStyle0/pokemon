@@ -9,13 +9,17 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.jackle.pokemon.CustomDialog.Companion.KEY_SHARED_PREFERENCES_NAME
-import com.jackle.pokemon.CustomDialog.Companion.KEY_TRAINER_NAME
-import com.jackle.pokemon.PokemonDetailActivity.Companion.POKEMON_DETAIL
+import com.jackle.pokemon.detail.PokemonDetailActivity.Companion.POKEMON_DETAIL
+import com.jackle.pokemon.collection.PokemonCollectionActivity
 import com.jackle.pokemon.databinding.ActivityMainBinding
+import com.jackle.pokemon.detail.PokemonDetailActivity
+import com.jackle.pokemon.model.Pokemon
+import com.jackle.pokemon.network.PokemonRepositoryImpl
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -29,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding.pokeBall.setOnClickListener {
             binding.pokeBallAnimate.visibility = View.VISIBLE
             val apiHelper = PokemonRepositoryImpl(PokemonFactoryApi.createAPI())
-            viewModel.getPokemonList(apiHelper)
+            viewModel.getPokemonList()
         }
 
         lifecycleScope.launch {
@@ -57,19 +61,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getTrainerName() {
-        val sharedPref =
-            getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE) ?: return
-        val trainerName = sharedPref.getString(KEY_TRAINER_NAME, "")
-
-        if (!trainerName.isNullOrEmpty()) {
-            this.toast("Trainer name is $trainerName")
-        }
+//        val sharedPref =
+//            getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE) ?: return
+//        val trainerName = sharedPref.getString(KEY_TRAINER_NAME, "")
+//
+//        if (!trainerName.isNullOrEmpty()) {
+//            this.toast("Trainer name is $trainerName")
+//        }
     }
 
     private fun Context.toast(message: String) =
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
-    private fun navigateToDetail(detail:Pokemon) {
+    private fun navigateToDetail(detail: Pokemon) {
         val intent = Intent(this, PokemonDetailActivity::class.java)
         intent.putExtra(POKEMON_DETAIL,detail)
         startActivity(intent)

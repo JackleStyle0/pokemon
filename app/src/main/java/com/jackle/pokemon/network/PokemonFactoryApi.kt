@@ -1,5 +1,6 @@
 package com.jackle.pokemon
 
+import com.jackle.pokemon.network.PokemonApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

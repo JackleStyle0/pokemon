@@ -1,10 +1,12 @@
-package com.jackle.pokemon
+package com.jackle.pokemon.collection.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.jackle.pokemon.model.Pokemon
+import com.jackle.pokemon.R
 import com.jackle.pokemon.databinding.PokemonCardItemBinding
 
 class PokemonAdapter(

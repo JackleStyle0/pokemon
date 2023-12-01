@@ -1,9 +1,10 @@
-package com.jackle.pokemon
+package com.jackle.pokemon.detail
 
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.jackle.pokemon.model.Pokemon
 import com.jackle.pokemon.databinding.ActivityPokemonDetailBinding
 
 class PokemonDetailActivity : AppCompatActivity() {

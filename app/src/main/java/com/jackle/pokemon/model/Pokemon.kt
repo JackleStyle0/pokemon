@@ -1,4 +1,4 @@
-package com.jackle.pokemon
+package com.jackle.pokemon.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -21,7 +21,6 @@ class CustomDialog : DialogFragment() {
 
     companion object {
         fun newInstance(): CustomDialog = CustomDialog()
-        const val KEY_SHARED_PREFERENCES_NAME = "shared_preferences"
         const val KEY_TRAINER_NAME = "pokemon_trainer_name"
     }
 
@@ -38,8 +37,8 @@ class CustomDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPref =
-            activity?.getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+//        sharedPref =
+//            activity?.getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
 
         initial()
         bindingAction()
@@ -79,10 +78,10 @@ class CustomDialog : DialogFragment() {
     private fun saveTrainerName() {
         if (trainerName.isNullOrEmpty()) return
 
-        val sharedPref = activity?.getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE) ?: return
-        with(sharedPref.edit()) {
-            putString(KEY_TRAINER_NAME, trainerName)
-            apply()
-        }
+//        val sharedPref = activity?.getSharedPreferences(KEY_SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE) ?: return
+//        with(sharedPref.edit()) {
+//            putString(KEY_TRAINER_NAME, trainerName)
+//            apply()
+//        }
     }
 }

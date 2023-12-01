@@ -1,7 +1,8 @@
-package com.jackle.pokemon
+package com.jackle.pokemon.collection
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.jackle.pokemon.collection.adapter.PokemonAdapter
 import com.jackle.pokemon.databinding.ActivityPokemonCollectionBinding
 
 class PokemonCollectionActivity : AppCompatActivity() {

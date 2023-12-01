@@ -1,5 +1,6 @@
-package com.jackle.pokemon
+package com.jackle.pokemon.network
 
+import com.jackle.pokemon.model.Pokemon
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
