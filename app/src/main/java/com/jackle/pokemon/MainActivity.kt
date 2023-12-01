@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.jackle.pokemon.CustomDialog.Companion.KEY_SHARED_PREFERENCES_NAME
 import com.jackle.pokemon.CustomDialog.Companion.KEY_TRAINER_NAME
 import com.jackle.pokemon.databinding.ActivityMainBinding
