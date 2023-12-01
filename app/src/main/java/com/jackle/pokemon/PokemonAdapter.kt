@@ -35,7 +35,7 @@ class PokemonViewHolder(
             bind.imageView.background =
                 ContextCompat.getDrawable(
                     bind.imageView.context,
-                    R.drawable.caterpie
+                    R.drawable.pokemon_placeholder
                 )
         }
     }
