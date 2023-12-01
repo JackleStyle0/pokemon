@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="24dp">
+
+    <TextView
+        android:id="@+id/titleEn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="gengar" />
+
+    <TextView
+        android:id="@+id/titleJp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleEn"
+        tools:text="gengar" />
+
+    <ImageView
+        android:id="@+id/pokemonImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleJp"
+        app:srcCompat="@drawable/pokeball" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonImage">
+
+        <TextView
+            android:id="@+id/pokemonType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            tools:text="Type : ghost" />
+
+        <TextView
+            android:id="@+id/pokemonHp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            tools:text="hp: 60" />
+
+        <TextView
+            android:id="@+id/pokemonAttack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            tools:text="attack: 65" />
+
+        <TextView
+            android:id="@+id/pokemonDefense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            tools:text="defense: 60" />
+        <TextView
+            android:id="@+id/pokemonSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="16sp"
+            tools:text="speed: 60" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

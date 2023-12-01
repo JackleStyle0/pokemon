@@ -12,7 +12,6 @@ class PokemonCollectionActivity : AppCompatActivity() {
         binding = ActivityPokemonCollectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val adapter = PokemonAdapter(listOf())
         binding.recyclerView.adapter = adapter
 

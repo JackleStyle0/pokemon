@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +26,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.pokeBall.setOnClickListener {
+            binding.pokeBallAnimate.visibility = View.VISIBLE
             val apiHelper = PokemonRepositoryImpl(PokemonFactoryApi.createAPI())
             viewModel.getPokemonList(apiHelper)
         }
 
         lifecycleScope.launch {
             viewModel.uiState.collectLatest {
+                this@MainActivity.toast("GOTCHA!")
+                binding.pokeBallAnimate.visibility = View.GONE
                 Log.d(
                     MainActivity::class.java.simpleName,
                     "NameEn ${it.name.english} NameTh ${it.hp}"
@@ -56,10 +60,10 @@ class MainActivity : AppCompatActivity() {
         val trainerName = sharedPref.getString(KEY_TRAINER_NAME, "")
 
         if (!trainerName.isNullOrEmpty()) {
-            this.toast(trainerName)
+            this.toast("Trainer name is $trainerName")
         }
     }
 
     private fun Context.toast(message: String) =
-        Toast.makeText(this, "Trainer name is $message", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

@@ -18,6 +18,21 @@
         app:srcCompat="@drawable/pokeball"
         tools:viewBindingIgnore="true" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/pokeBallAnimate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bagPack"
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="pokeball_animate.json"
+        app:lottie_speed="1.0"
+        android:visibility="gone"/>
+
     <ImageView
         android:id="@+id/bagPack"
         android:layout_width="70dp"
