@@ -2,6 +2,7 @@ package com.jackle.pokemon.home
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,11 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<MainViewModel>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        observeUiState()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,8 +45,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        observeUiState()
         handleClickView()
     }
 
@@ -72,6 +76,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToDetail(detail: Pokemon) {
+        Log.d(">>>", "navigate")
         findNavController().navigate(
             R.id.action_homeFragment_to_pokemonDetailFragment,
             bundleOf(

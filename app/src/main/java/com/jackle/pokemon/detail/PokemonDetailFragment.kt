@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.jackle.pokemon.databinding.FragmentPokemonDetailBinding
+import com.jackle.pokemon.extension.loadImage
 import com.jackle.pokemon.model.Pokemon
 
 class PokemonDetailFragment : Fragment() {
@@ -48,12 +49,4 @@ class PokemonDetailFragment : Fragment() {
         pokemonSpeed.text = "Speed: ${detail.speed}"
     }
 
-
-    private fun ImageView.loadImage(url: String) {
-        Glide
-            .with(this)
-            .load(url)
-            .centerCrop()
-            .into(this)
-    }
 }

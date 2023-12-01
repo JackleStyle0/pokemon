@@ -26,6 +26,8 @@ data class Pokemon(
 
 @Parcelize
 data class Name(
+    @SerializedName("english")
     val english: String,
+    @SerializedName("japanese")
     val japanese: String
 ) : Parcelable

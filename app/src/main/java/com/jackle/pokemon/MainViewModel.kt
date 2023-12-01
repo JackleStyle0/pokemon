@@ -44,7 +44,7 @@ class MainViewModel @Inject constructor(
 
     private fun savePokemonToPreference(pokemon: Pokemon) {
         sharedPreferences
-            .get<List<Pokemon>>(PREF_KEY_POKEMON, "")
+            .get<List<Pokemon>>(PREF_KEY_POKEMON, listOf())
             .toMutableList()
             .apply {
                 add(pokemon)
