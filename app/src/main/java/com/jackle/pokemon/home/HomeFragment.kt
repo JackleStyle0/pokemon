@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.jackle.pokemon.CustomDialog
+import com.jackle.pokemon.TrainerNameDialog
 import com.jackle.pokemon.MainViewModel
 import com.jackle.pokemon.R
 import com.jackle.pokemon.databinding.FragmentHomeBinding
@@ -69,9 +69,9 @@ class HomeFragment : Fragment() {
         }
 
         binding.trainer.setOnClickListener {
-            CustomDialog.newInstance().apply {
+            TrainerNameDialog.newInstance().apply {
                 onOkClickListener = { getTrainerName() }
-            }.show(parentFragmentManager, CustomDialog::class.java.simpleName)
+            }.show(parentFragmentManager, TrainerNameDialog::class.java.simpleName)
         }
     }
 
