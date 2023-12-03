@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.trainer.setOnClickListener {
-            CustomDialog.newInstance().apply {
+            TrainerNameDialog.newInstance().apply {
                 onOkClickListener = { getTrainerName() }
-            }.show(supportFragmentManager, CustomDialog::class.java.simpleName)
+            }.show(supportFragmentManager, TrainerNameDialog::class.java.simpleName)
         }
     }
 

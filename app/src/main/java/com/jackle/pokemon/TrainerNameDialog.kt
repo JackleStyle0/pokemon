@@ -1,6 +1,5 @@
 package com.jackle.pokemon
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import com.jackle.pokemon.databinding.CustomDialogViewBinding
 
-class CustomDialog : DialogFragment() {
+class TrainerNameDialog : DialogFragment() {
 
     private lateinit var binding: CustomDialogViewBinding
 
@@ -20,7 +19,7 @@ class CustomDialog : DialogFragment() {
     var onOkClickListener: (() -> Unit)? = null
 
     companion object {
-        fun newInstance(): CustomDialog = CustomDialog()
+        fun newInstance(): TrainerNameDialog = TrainerNameDialog()
         const val KEY_TRAINER_NAME = "pokemon_trainer_name"
     }
 
