@@ -2,6 +2,7 @@ package com.jackle.pokemon.collection
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,8 @@ class PokemonCollectionFragment : Fragment() {
     @Inject
     lateinit var sharedPreferences: SharedPreferences
 
+    private var pokemonList: List<Pokemon> = emptyList()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,10 +40,10 @@ class PokemonCollectionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val pokemonList = sharedPreferences.get<List<Pokemon>>(PREF_KEY_POKEMON, listOf())
-        val adapter = PokemonAdapter(
-            pokemonList
-        ) {
+
+        pokemonList = sharedPreferences.get<List<Pokemon>>(PREF_KEY_POKEMON, listOf())
+
+        val adapter = PokemonAdapter(pokemonList) {
             findNavController()
                 .navigate(
                     R.id.action_pokemonCollectionFragment_to_pokemonDetailFragment,
@@ -51,5 +54,16 @@ class PokemonCollectionFragment : Fragment() {
         }
 
         binding.recyclerView.adapter = adapter
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArray("list", pokemonList.toTypedArray())
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        val list = savedInstanceState?.getParcelableArray("list")
+        Log.d("test", ">>> ${list?.size}")
     }
 }
