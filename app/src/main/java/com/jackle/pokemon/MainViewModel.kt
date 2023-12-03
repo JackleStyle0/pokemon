@@ -11,8 +11,10 @@ import com.jackle.pokemon.network.PokemonRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
@@ -24,8 +26,8 @@ class MainViewModel @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
 
-    private val _uiState = MutableSharedFlow<Pokemon>()
-    val uiState: SharedFlow<Pokemon> = _uiState.asSharedFlow()
+    private val _uiState = MutableStateFlow<Pokemon?>(null)
+    val uiState: SharedFlow<Pokemon?> = _uiState.asStateFlow()
 
     private fun randomPokemon(pokemonList: List<Pokemon>) = pokemonList.random()
 
@@ -36,7 +38,6 @@ class MainViewModel @Inject constructor(
                 .catch { Log.d(MainViewModel::class.java.simpleName, ">> error") }
                 .collect {
                     val pokemon = randomPokemon(it)
-                    savePokemonToPreference(pokemon)
                     _uiState.emit(pokemon)
                 }
         }

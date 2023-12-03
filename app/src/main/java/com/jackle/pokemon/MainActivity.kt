@@ -40,11 +40,11 @@ class MainActivity : AppCompatActivity() {
             viewModel.uiState.collectLatest {
                 this@MainActivity.toast("GOTCHA!")
                 binding.pokeBallAnimate.visibility = View.GONE
-                navigateToDetail(it)
-                Log.d(
-                    MainActivity::class.java.simpleName,
-                    "NameEn ${it.name.english} NameTh ${it.hp}"
-                )
+//                navigateToDetail(it)
+//                Log.d(
+//                    MainActivity::class.java.simpleName,
+//                    "NameEn ${it.name.english} NameTh ${it.hp}"
+//                )
             }
         }
 
