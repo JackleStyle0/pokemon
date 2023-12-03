@@ -50,7 +50,9 @@ class HomeFragment : Fragment() {
 
     private fun observeUiState() {
         lifecycleScope.launch {
-            viewModel.uiState.collectLatest {
+            viewModel.uiState.collect {
+                if (it == null) return@collect
+
                 context?.toast("GOTCHA!")
                 binding.pokeBallAnimate.visibility = View.GONE
                 navigateToDetail(it)
